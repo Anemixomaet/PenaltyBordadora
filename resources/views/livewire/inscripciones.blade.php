@@ -40,7 +40,7 @@
                     <tbody>
                         @foreach($inscripciones as $inscripcion)        
                             <tr>
-                                <td class="border px-4 py-2">{{$inscripcion->temporada->detalle}}</td>
+                                <td class="border px-4 py-2">{{$inscripcion->temporada->detalle }}</td>
                                 <td class="border px-4 py-2">{{$inscripcion->categorias->nombre}}</td>
                                 <td class="border px-4 py-2">{{$inscripcion->personas->nombre}} {{$inscripcion->personas->apellido}}</td>
                                
