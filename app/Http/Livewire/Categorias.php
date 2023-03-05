@@ -8,7 +8,6 @@ use App\Models\Categoria;
 class Categorias extends Component
 {
     public $categorias;
-    //public $tipoPersonas = [];
     
 
     public $categoria_id;
@@ -51,7 +50,7 @@ class Categorias extends Component
         $categoria = Categoria::findOrFail($id);
         $this->categoria_id = $categoria->id;
         $this->nombre = $categoria->nombre;
-        $this->detalle = $categoria->apellido;
+        $this->detalle = $categoria->detalle;
 
         $this->abrirModal();
     }
@@ -90,8 +89,4 @@ class Categorias extends Component
          $this->limpiarCampos();
     }
 
-    // public function tiposPersonas()
-    // {
-    //     $this->tiposPersonas = 'tecnico';
-    // }
 }

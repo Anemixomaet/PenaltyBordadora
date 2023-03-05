@@ -30,19 +30,22 @@
                 @endif
                 <table class="table-fixed max-w-full">
                     <thead>
-                        <tr class="bg-cyan-700 text-black">
+                        <tr class="bg-gray-50 text-black">
                             <th class="px-4 py-2">Temporada</th>
                             <th class="px-4 py-2">Categoria</th>
                             <th class="px-4 py-2">Jugador</th>
+                            <th class="px-4 py-2">Observacion</th>
                             <th class="px-4 py-2">Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($inscripciones as $inscripcion)        
+                        @foreach($inscripciones as $inscripcion)          
                             <tr>
                                 <td class="border px-4 py-2">{{$inscripcion->temporada->detalle }}</td>
                                 <td class="border px-4 py-2">{{$inscripcion->categorias->nombre}}</td>
                                 <td class="border px-4 py-2">{{$inscripcion->personas->nombre}} {{$inscripcion->personas->apellido}}</td>
+                                <td class="border px-4 py-2">{{$inscripcion->observacion}}</td>
+                               
                                
                                 <td class="border px-4 py-2 text-center">   
                                     <x-jet-button wire:click="editar({{$inscripcion->id}})" class="font-bold">

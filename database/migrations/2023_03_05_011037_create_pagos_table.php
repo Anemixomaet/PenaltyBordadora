@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTemporadaTable extends Migration
+class CreatePagosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,14 @@ class CreateTemporadaTable extends Migration
      */
     public function up()
     {
-        Schema::create('temporada', function (Blueprint $table) {
+        Schema::create('pagos', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('id_temporada');
+            $table->unsignedBigInteger('id_persona');
+            $table->string('comprobante');
+            $table->string('fecha');
             $table->string('detalle');
+
             $table->timestamps();
         });
     }
@@ -27,6 +32,6 @@ class CreateTemporadaTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('temporada');
+        Schema::dropIfExists('pagos');
     }
 }

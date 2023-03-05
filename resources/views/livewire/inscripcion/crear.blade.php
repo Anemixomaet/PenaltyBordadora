@@ -35,7 +35,7 @@
                 @if(count($jugadores) > 0)
                     <div class="mb-4">
                         <label class="inline-block w-32 font-bold">Jugador:</label>
-                        <select name="person_id" wire:model="persons_id" 
+                        <select name="id_persona" wire:model="persona_id" 
                             class="w-full leading-tight bg-white border border-gray-400 rounded shadow appearance-none hover:border-gray-500 focus:outline-none focus:shadow-outline">
                             <option value="">Seleccione un jugador </option>
                             @foreach($jugadores as $jugador)
@@ -44,7 +44,10 @@
                         </select>
                     </div>
                 @endif
-
+                <div class="mb-4">
+                    <label for="tipo" class="block text-gray-700 text-sm font-bold mb-2">Observacion:</label>
+                    <input type="text" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="observacion" wire:model="observacion">
+                </div>  
                 
             </div>
         </form>

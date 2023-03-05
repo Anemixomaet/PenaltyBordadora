@@ -9,8 +9,8 @@ class Inscripcion extends Model
 {
     use HasFactory;
 
-    protected $table = 'inscripcion';
-    protected $fillable = ['id','id_persons','id_categoria', 'id_temporada'];
+    protected $table = 'inscripciones';
+    protected $fillable = ['id','id_temporada ','id_categoria', 'id_temporada'];
 
     public function categorias() 
     {
@@ -19,7 +19,7 @@ class Inscripcion extends Model
 
     public function personas() 
     {
-        return $this->belongsTo(Person::class, 'id_persons');
+        return $this->belongsTo(Persona::class, 'id_persona');
     }
     public function temporada() 
     {

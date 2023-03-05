@@ -32,6 +32,7 @@
                     <thead>
                         <tr class="bg-gray-50 text-black">
                             <th class="px-4 py-2">Nombre</th>
+                            <th class="px-4 py-2">Detalle</th>
                             <th class="px-4 py-2">Acciones</th>
                         </tr>
                     </thead>
@@ -39,6 +40,7 @@
                         @foreach($temporadas as $temporada)        
                             <tr>
                                 
+                                <td class="border px-4 py-2">{{$temporada->nombre}}</td>
                                 <td class="border px-4 py-2">{{$temporada->detalle}}</td>
                                
                                 <td class="border px-4 py-2 text-center">   

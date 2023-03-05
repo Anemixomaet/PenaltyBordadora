@@ -36,9 +36,9 @@
                             <th class="px-4 py-2">Teléfono</th>
                             <th class="px-1 py-1">Email</th>
                             <th class="px-4 py-2">Fecha Nacimiento</th>
+                            <th class="px-4 py-2">Edad</th>
                             <th class="px-4 py-2">Imagen</th>
                             <th class="px-4 py-2">Genero</th>
-                            <th class="px-4 py-2">Categoria</th>
 
                             <th class="px-4 py-2">Acciones</th>
                         </tr>
@@ -50,10 +50,10 @@
                                 <td class="border px-4 py-2">{{$jugador->cedula}}</td>
                                 <td class="border px-4 py-2">{{$jugador->telefono}}</td>
                                 <td class="border px-4 py-2">{{$jugador->email}}</td>
-                                <td class="border px-4 py-2">{{$jugador->fechaNac}}</td>
+                                <td class="border px-4 py-2">{{$jugador->fechaNacimiento}}</td>
+                                <td class="border px-4 py-2">{{$jugador->edad}}</td>
                                 <td class="border px-4 py-2">{{$jugador->imagen}}</td>
                                 <td class="border px-4 py-2">{{$jugador->genero}}</td>
-                                <td class="border px-4 py-2">{{$jugador->categorias->nombre}}</td>
                                
                                 <td class="border px-4 py-2 text-center">   
                                     <x-jet-button wire:click="editar({{$jugador->id}})" class="font-bold">

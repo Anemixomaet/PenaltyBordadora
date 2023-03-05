@@ -10,6 +10,7 @@ class Temporadas extends Component
     public $temporadas;
 
     public $temporada_id;
+    public $nombre;
     public $detalle;
 
     public $modal = false;
@@ -37,6 +38,7 @@ class Temporadas extends Component
     public function limpiarCampos()
     {
         $this->temporada_id = null;
+        $this->nombre = '';
         $this->detalle = '';       
     }
 
@@ -44,6 +46,7 @@ class Temporadas extends Component
     {
         $temporada = Temporada::findOrFail($id);
         $this->temporada_id = $temporada->id;
+        $this->nombre = $temporada->nombre;
         $this->detalle = $temporada->detalle;
 
         $this->abrirModal();
@@ -63,7 +66,7 @@ class Temporadas extends Component
         {
             Temporada::create(
             [
-                
+                'nombre' => $this->nombre,
                 'detalle' => $this->detalle,
                 
             ]);    
@@ -71,6 +74,7 @@ class Temporadas extends Component
         else
         {
             $temporada = Temporada::find($this->temporada_id);
+            $temporada->nombre = $this->nombre;
             $temporada->detalle = $this->detalle;
             $temporada->save();
         }

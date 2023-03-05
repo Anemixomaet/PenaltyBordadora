@@ -30,27 +30,17 @@
                     <input type="date" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="fechaNac" wire:model="fechaNac">
                 </div>
                 <div class="mb-4">
+                    <label for="tipo" class="block text-gray-700 text-sm font-bold mb-2">Edad:</label>
+                    <input type="text" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="edad" wire:model="edad" readonly>
+                </div>
+                <div class="mb-4">
                     <label for="tipo" class="block text-gray-700 text-sm font-bold mb-2">Imagen:</label>
                     <input type="text" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="imagen" wire:model="imagen">
                 </div>
                 <div class="mb-4">
                     <label for="tipo" class="block text-gray-700 text-sm font-bold mb-2">Genero:</label>
                     <input type="text" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="genero" wire:model="genero">
-                </div>
-                
-                @if(count($categorias) > 0)
-                    <div class="mb-4">
-                        <label class="inline-block w-32 font-bold">Categoria:</label>
-                        <select name="categoria_id" wire:model="categoria_id" 
-                            class="w-full leading-tight bg-white border border-gray-400 rounded shadow appearance-none hover:border-gray-500 focus:outline-none focus:shadow-outline">
-                            <option value="">Seleccione una Categoria </option>
-                            @foreach($categorias as $categoria)
-                                <option value="{{ $categoria->id }}">{{ $categoria->nombre }} </option>
-                            @endforeach
-                        </select>
-                    </div>
-                @endif
-                
+                </div>               
 
 
             </div>
