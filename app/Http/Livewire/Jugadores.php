@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use App\Models\Persona;
+use Carbon\Carbon;
 
 class Jugadores extends Component
 {
@@ -20,7 +21,8 @@ class Jugadores extends Component
     public $email;
     public $fechaNac;
     public $imagen;
-    public $genero=[];
+    public $genero;
+    public $generos=['M'=>'Masculino','F'=>'Femenino','O'=>'Otro'];
 
 
     public $modal = false;
@@ -82,6 +84,8 @@ class Jugadores extends Component
         session()->flash('message', 'Jugador eliminado correctamente');
     }
 
+    
+
     public function guardar()
     {
         $person = null;
@@ -121,10 +125,23 @@ class Jugadores extends Component
          $this->limpiarCampos();
     }
 
-    // public function tiposPersonas()
-    // {
-    //     $this->tiposPersonas = 'tecnico';
-    // }
+    
+    public function edadJugador()
+    {
+        $fecha1 = date_create(Carbon::now());
+        $jugador1 = Persona::find(1);
+        
+        $fecha2 = date_create($jugador1->fechaNacimiento);
+        $edad=date_diff($fecha2,$fecha1)->format('%R%Y');
+        dd(intval($edad));
+        dd($edad);
+       
 
+        // $date = $date->format('Y-m-d');
+
+        // $date = Carbon::parse($jugador->fechaNac)->age;
+
+    }
+    
     
 }

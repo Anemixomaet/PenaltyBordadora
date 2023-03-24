@@ -10,7 +10,7 @@ class Inscripcion extends Model
     use HasFactory;
 
     protected $table = 'inscripciones';
-    protected $fillable = ['id','id_temporada ','id_categoria', 'id_temporada'];
+    protected $fillable = ['id','id_persona','id_categoria', 'id_temporada','observacion'];
 
     public function categorias() 
     {

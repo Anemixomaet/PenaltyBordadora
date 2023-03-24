@@ -9,6 +9,6 @@ class Temporada extends Model
 {
     use HasFactory;
     protected $table = 'temporadas';
-    protected $fillable = ['id','nombre','detalle'];
+    protected $fillable = ['id','nombre','detalle','estado'];
 
 }

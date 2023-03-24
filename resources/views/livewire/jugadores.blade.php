@@ -18,6 +18,9 @@
                 <x-jet-secondary-button wire:click="crear()" class="mt-7 mb-7" wire:loading.attr="disabled">
                     {{ __('Nuevo') }}
                 </x-jet-secondary-button>
+                {{-- <x-jet-secondary-button wire:click="edadJugador()" class="mt-7 mb-7" wire:loading.attr="disabled">
+                    {{ __('fecha') }}
+                </x-jet-secondary-button> --}}
             </div>
         </div>
     </div>
@@ -51,7 +54,7 @@
                                 <td class="border px-4 py-2">{{$jugador->telefono}}</td>
                                 <td class="border px-4 py-2">{{$jugador->email}}</td>
                                 <td class="border px-4 py-2">{{$jugador->fechaNacimiento}}</td>
-                                <td class="border px-4 py-2">{{$jugador->edad}}</td>
+                                <td class="border px-4 py-2">{{$jugador->edadJugador}}</td>
                                 <td class="border px-4 py-2">{{$jugador->imagen}}</td>
                                 <td class="border px-4 py-2">{{$jugador->genero}}</td>
                                

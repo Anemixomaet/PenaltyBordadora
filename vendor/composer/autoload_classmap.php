@@ -37,7 +37,7 @@ return array(
     'App\\Models\\Categoria' => $baseDir . '/app/Models/Categoria.php',
     'App\\Models\\Inscripcion' => $baseDir . '/app/Models/Inscripcion.php',
     'App\\Models\\Pago' => $baseDir . '/app/Models/Pago.php',
-    'App\\Models\\Person' => $baseDir . '/app/Models/Person.php',
+    'App\\Models\\Persona' => $baseDir . '/app/Models/Persona.php',
     'App\\Models\\Temporada' => $baseDir . '/app/Models/Temporada.php',
     'App\\Models\\User' => $baseDir . '/app/Models/User.php',
     'App\\Providers\\AppServiceProvider' => $baseDir . '/app/Providers/AppServiceProvider.php',

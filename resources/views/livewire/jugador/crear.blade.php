@@ -26,22 +26,32 @@
                     <input type="text" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" wire:model="email">
                 </div>
                 <div class="mb-4">
-                    <label for="tipo" class="block text-gray-700 text-sm font-bold mb-2">Fecha Nacimiento:</label>
+                    <label for="fechaNacimiento" class="block text-gray-700 text-sm font-bold mb-2">Fecha Nacimiento:</label>
                     <input type="date" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="fechaNac" wire:model="fechaNac">
                 </div>
+                
                 <div class="mb-4">
-                    <label for="tipo" class="block text-gray-700 text-sm font-bold mb-2">Edad:</label>
-                    <input type="text" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="edad" wire:model="edad" readonly>
-                </div>
-                <div class="mb-4">
-                    <label for="tipo" class="block text-gray-700 text-sm font-bold mb-2">Imagen:</label>
+                    <label for="imagen" class="block text-gray-700 text-sm font-bold mb-2">Imagen:</label>
                     <input type="text" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="imagen" wire:model="imagen">
                 </div>
-                <div class="mb-4">
+                {{-- <div class="mb-4">
                     <label for="tipo" class="block text-gray-700 text-sm font-bold mb-2">Genero:</label>
                     <input type="text" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="genero" wire:model="genero">
-                </div>               
+                </div>                --}}
+            
 
+                @if(count($generos) > 0)
+                    <div class="mb-4">
+                        <label class="inline-block w-32 font-bold">Genero:</label>
+                        <select name="genero" wire:model="genero" 
+                            class="w-full leading-tight bg-white border border-gray-400 rounded shadow appearance-none hover:border-gray-500 focus:outline-none focus:shadow-outline">
+                            <option value="">Seleccione un genero </option>
+                            @foreach($generos as $llave => $gen)
+                                <option value="{{ $llave }}">{{ $gen }} </option>
+                            @endforeach
+                        </select>
+                    </div>
+                @endif
 
             </div>
         </form>

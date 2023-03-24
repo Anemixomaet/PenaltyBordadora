@@ -2,6 +2,21 @@
     <x-slot name="title">
         {{ __('Crear Nueva Inscripcion') }}
     </x-slot>
+    <div class="py-3">
+        <div class="max-w-7xl mx-auto sm:px6 lg:px-8">
+            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg px-4 py-4">
+                @if(session()->has('message_modal'))
+                    <div class="bg-teal-100 rounded-b text-teal-900 px-4 py-4 shadow-md my-3" role="alert">
+                        <div class="flex">
+                            <div>
+                                <h4>{{ session('message_modal')}}</h4>
+                            </div>
+                        </div>
+                    </div>
+                @endif
+            </div>
+        </div>
+    </div>
     <x-slot name="content">
         <form>
             <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">

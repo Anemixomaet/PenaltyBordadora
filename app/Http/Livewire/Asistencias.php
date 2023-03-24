@@ -4,21 +4,35 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use App\Models\Asistencia;
-use App\Models\Person;
+use App\Models\Persona;
+use App\Models\Temporada;
+use App\Models\Categoria;
+use App\Models\Inscripcion;
+
 
 class Asistencias extends Component
 {
 
     public $asistencias;
-    public $personas;
+    public $personas=[];
+    public $categorias;
+    public $temporadas;
+    public $inscripciones=[];
 
     
     //datos de asistencia
     public $asistencia_id;
     public $asistencia;
+    public $fecha;
+
+    //Datos de inscripcion
+    public $inscripcion_id;
+    public $persona_id;
 
     //Datos de persona
     public $person_id;
+    public $temporada_id;
+    public $categoria_id;
     
 
     public $modal = false;
@@ -26,7 +40,7 @@ class Asistencias extends Component
     public function render()
     {
         $this->asistencias = Asistencia::all();
-        $this->personas = Person::all();
+        $this->inscripciones = Inscripcion::all();
         return view('livewire.asistencias');
         
     }
@@ -50,16 +64,24 @@ class Asistencias extends Component
     public function limpiarCampos()
     {
         $this->asistencia_id = null;
-        $this-> asistencia = '';  
-        $this-> person_id= '';    
+        $this-> inscripcion_id= ''; 
+        $this-> persona_id= ''; 
+        $this-> categoria_id= '';  
+        $this-> temporada_id= '';
+        $this-> asistencia = '';
+        $this-> fecha = '';            
     }
 
     public function editar($id)
     {
         $asistencia = Asistencia::findOrFail($id);
         $this->asistencia_id = $asistencia->id;
+        $this->inscripcion_id = $asistencia->id_inscripcion;
+        $this->persona_id = $asistencia->id_persona;
+        $this->categoria_id = $asistencia->id_categoria;
+        $this->temporada_id =$asistencia->id_temporada;
         $this->asistencia = $asistencia->asistencia;
-        $this->person_id =$asistencia->id_persons;
+        $this->fecha =$asistencia->fecha;
 
       //  $this->tiposPersonas();
         $this->abrirModal();
@@ -79,17 +101,25 @@ class Asistencias extends Component
         {
             Asistencia::create(
             [
+                'id_inscripcion'=> $this->inscripcion_id,
+                'id_temporada'=> $this->temporada_id,
+                'id_categoria'=> $this->categoria_id,
+                'id_persona'=> $this->persona_id,
                 'asistencia' => $this->asistencia,
-                'id_persons'=> $this->person_id
+                'fecha' => $this->fecha,
                 
             ]);    
         }
         else
         {
-            $person = Asistencia::find($this->asistencia_id);
-            $person->asistencia = $this->asistencia;
-            $person->id_persons = $this->person_id;
-            $person->save();
+            $asistencia = Asistencia::find($this->asistencia_id);
+            $asistencia->id_inscripcion = $this->inscripcion_id;
+            $asistencia->id_temporada = $this->temporada_id;
+            $asistencia->id_categoria = $this->categoria_id;
+            $asistencia->id_persona = $this->persona_id;
+            $asistencia->asistencia = $this->asistencia;
+            $asistencia->fecha = $this->fecha;
+            $asistencia->save();
         }
         
          session()->flash('message',

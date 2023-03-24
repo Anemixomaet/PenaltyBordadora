@@ -12,6 +12,8 @@ class Temporadas extends Component
     public $temporada_id;
     public $nombre;
     public $detalle;
+    public $estado;
+    
 
     public $modal = false;
 
@@ -39,7 +41,8 @@ class Temporadas extends Component
     {
         $this->temporada_id = null;
         $this->nombre = '';
-        $this->detalle = '';       
+        $this->detalle = ''; 
+        $this->estado = '';      
     }
 
     public function editar($id)
@@ -48,6 +51,7 @@ class Temporadas extends Component
         $this->temporada_id = $temporada->id;
         $this->nombre = $temporada->nombre;
         $this->detalle = $temporada->detalle;
+        $this->estado = $temporada->estado;
 
         $this->abrirModal();
     }
@@ -68,6 +72,7 @@ class Temporadas extends Component
             [
                 'nombre' => $this->nombre,
                 'detalle' => $this->detalle,
+                'estado' => $this->estado,
                 
             ]);    
         }
@@ -76,6 +81,7 @@ class Temporadas extends Component
             $temporada = Temporada::find($this->temporada_id);
             $temporada->nombre = $this->nombre;
             $temporada->detalle = $this->detalle;
+            $temporada->estado = $this->estado;
             $temporada->save();
         }
         

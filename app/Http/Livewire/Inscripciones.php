@@ -111,10 +111,15 @@ class Inscripciones extends Component
          $this->limpiarCampos();
     }
 
-    // public function tiposPersonas()
-    // {
-    //     $this->tiposPersonas = 'tecnico';
-    // }
+    public function cambioTemporada()
+    {
+        session()->flash('message', $this->temporada_id ? '¡Cambiaste de temporada!' : '¡Se debe buscar las categorias!');
+        $categorias = Inscripcion::where('id_temporada', $this->temporada_id)->groupBy('id_categoria');
+        $jugador= Persona::find(1);
+        $fecha1 = date_create($jugador->fechaNacimiento);
+        $fecha2 = date_create(now());
+        $valor = date_diff($fecha1, $fecha2)->format('%R%Y') * 1;
+    }
     
 }
 

@@ -17,6 +17,7 @@ class CreateTemporadasTable extends Migration
             $table->id();
             $table->string('nombre');
             $table->string('detalle');
+            $table->string('estado');
             $table->timestamps();
         });
     }
