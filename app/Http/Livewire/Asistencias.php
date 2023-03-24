@@ -14,10 +14,10 @@ class Asistencias extends Component
 {
 
     public $asistencias;
-    public $personas=[];
     public $categorias;
     public $temporadas;
-    public $inscripciones=[];
+    public $personas=[];
+    public $personas_presentes = [];
 
     
     //datos de asistencia
@@ -25,22 +25,22 @@ class Asistencias extends Component
     public $asistencia;
     public $fecha;
 
-    //Datos de inscripcion
-    public $inscripcion_id;
-    public $persona_id;
 
     //Datos de persona
-    public $person_id;
+    public $persona_id;
     public $temporada_id;
     public $categoria_id;
+    public $inscripcion_id;
     
 
     public $modal = false;
 
     public function render()
     {
-        $this->asistencias = Asistencia::all();
-        $this->inscripciones = Inscripcion::all();
+        $this->temporadas = Temporada::all();
+        $this->categorias = Categoria::all();
+        $this->asistencias = Asistencia::all();                      
+        $this->asistencia = now()->format('Y-m-d');
         return view('livewire.asistencias');
         
     }
@@ -64,10 +64,7 @@ class Asistencias extends Component
     public function limpiarCampos()
     {
         $this->asistencia_id = null;
-        $this-> inscripcion_id= ''; 
         $this-> persona_id= ''; 
-        $this-> categoria_id= '';  
-        $this-> temporada_id= '';
         $this-> asistencia = '';
         $this-> fecha = '';            
     }
@@ -76,14 +73,10 @@ class Asistencias extends Component
     {
         $asistencia = Asistencia::findOrFail($id);
         $this->asistencia_id = $asistencia->id;
-        $this->inscripcion_id = $asistencia->id_inscripcion;
         $this->persona_id = $asistencia->id_persona;
-        $this->categoria_id = $asistencia->id_categoria;
-        $this->temporada_id =$asistencia->id_temporada;
         $this->asistencia = $asistencia->asistencia;
         $this->fecha =$asistencia->fecha;
 
-      //  $this->tiposPersonas();
         $this->abrirModal();
     }
 
@@ -101,9 +94,9 @@ class Asistencias extends Component
         {
             Asistencia::create(
             [
-                'id_inscripcion'=> $this->inscripcion_id,
                 'id_temporada'=> $this->temporada_id,
-                'id_categoria'=> $this->categoria_id,
+                'id_categoria'=> $this->temporada_id,
+                'id_inscripcion'=> $this->inscripcion_id,
                 'id_persona'=> $this->persona_id,
                 'asistencia' => $this->asistencia,
                 'fecha' => $this->fecha,
@@ -113,9 +106,6 @@ class Asistencias extends Component
         else
         {
             $asistencia = Asistencia::find($this->asistencia_id);
-            $asistencia->id_inscripcion = $this->inscripcion_id;
-            $asistencia->id_temporada = $this->temporada_id;
-            $asistencia->id_categoria = $this->categoria_id;
             $asistencia->id_persona = $this->persona_id;
             $asistencia->asistencia = $this->asistencia;
             $asistencia->fecha = $this->fecha;
@@ -129,9 +119,35 @@ class Asistencias extends Component
          $this->limpiarCampos();
     }
 
-    // public function tiposPersonas()
-    // {
-    //     $this->tiposPersonas = 'tecnico';
-    // }
+    public function cambioTemporada()
+    {
+        if($this->temporada_id == '' || $this->categoria_id == '')
+        {
+            return;
+        }
+        
+        $inscripciones = Inscripcion::where('id_temporada', $this->temporada_id)->where('id_categoria', $this->categoria_id)->get();
+        $this->personas = [];
+        foreach($inscripciones as $incripcion)
+        {
+            $this->personas[] = Persona::find($incripcion->id_persona);
+        }
+        //dd($personas);
+    }
+
+    public function cambioCategoria()
+    {
+        if($this->temporada_id == '' || $this->categoria_id == '')
+        {
+            return;
+        }        
+        $inscripciones = Inscripcion::where('id_temporada', $this->temporada_id)->where('id_categoria', $this->categoria_id)->get();
+        $this->personas = [];
+        foreach($inscripciones as $incripcion)
+        {
+            $this->personas[] = Persona::find($incripcion->id_persona);
+        }
+        // dd(var_dump($this->personas)); 
+    }
     
 }

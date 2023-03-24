@@ -30,8 +30,8 @@ class Jugadores extends Component
     public function render()
     {
         $this->jugadores = Persona::all();
+        //$this->edad = $this->edadJugador();
         return view('livewire.jugadores');
-        
     }
       
     public function crear()
@@ -135,12 +135,7 @@ class Jugadores extends Component
         $edad=date_diff($fecha2,$fecha1)->format('%R%Y');
         dd(intval($edad));
         dd($edad);
-       
-
-        // $date = $date->format('Y-m-d');
-
-        // $date = Carbon::parse($jugador->fechaNac)->age;
-
+  
     }
     
     

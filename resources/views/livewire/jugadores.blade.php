@@ -54,9 +54,10 @@
                                 <td class="border px-4 py-2">{{$jugador->telefono}}</td>
                                 <td class="border px-4 py-2">{{$jugador->email}}</td>
                                 <td class="border px-4 py-2">{{$jugador->fechaNacimiento}}</td>
-                                <td class="border px-4 py-2">{{$jugador->edadJugador}}</td>
+                                <td class="border px-4 py-2">{{$edad}}</td>
+                                
                                 <td class="border px-4 py-2">{{$jugador->imagen}}</td>
-                                <td class="border px-4 py-2">{{$jugador->genero}}</td>
+                                <td class="border px-4 py-2">{{$jugador->genero == 'M' ? 'Masculino' : ($jugador->genero == 'F' ? 'Femenino' : 'Otro')}}</td>
                                
                                 <td class="border px-4 py-2 text-center">   
                                     <x-jet-button wire:click="editar({{$jugador->id}})" class="font-bold">

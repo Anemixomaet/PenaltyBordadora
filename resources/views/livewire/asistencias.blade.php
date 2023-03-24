@@ -31,24 +31,20 @@
                 <table class="table-fixed w-full">
                     <thead>
                         <tr class="bg-gray-50 text-black">
-                            <th class="px-4 py-2">Inscripcion</th>
+                            <th class="px-4 py-2">Fecha</th>
                             <th class="px-4 py-2">Temporada</th>
                             <th class="px-4 py-2">Categoria</th>
-                            <th class="px-4 py-2">Jugador</th>
-                            <th class="px-4 py-2">Asistencia</th>
-                            <th class="px-4 py-2">Fecha</th>
                             <th class="px-4 py-2">Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach($asistencias as $asistencia)        
                             <tr>
-                                <td class="border px-4 py-2">{{$asistencia->inscripcion->id }}</td>
-                                <td class="border px-4 py-2">{{$asistencia->temporada->detalle }}</td>
-                                <td class="border px-4 py-2">{{$asistencia->categorias->nombre}}</td>
-                                <td class="border px-4 py-2">{{$asistencia->personas->nombre}} {{$asistencia->personas->apellido}}</td>    
-                                <td class="border px-4 py-2">{{$asistencia->asistencia}}</td>
+                                
                                 <td class="border px-4 py-2">{{$asistencia->fecha}}</td>
+                                <td class="border px-4 py-2">{{$asistencia->temporadas->detalle }}</td>
+                                <td class="border px-4 py-2">{{$asistencia->categorias->nombre}}</td>
+                                <td class="border px-4 py-2">{{$asistencia->personas->nombre}} {{$asistencia->personas->apellido}}</td> 
                                                            
                                 <td class="border px-4 py-2 text-center">   
                                     <x-jet-button wire:click="editar({{$asistencia->id}})" class="font-bold">
