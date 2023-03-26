@@ -6,11 +6,10 @@ use Livewire\Component;
 use App\Models\Persona;
 use Carbon\Carbon;
 
+
 class Jugadores extends Component
 {
     public $jugadores;
-    public $categorias;
-    public $edad;
     
     //datos de jugador
     public $persona_id;
@@ -30,8 +29,9 @@ class Jugadores extends Component
     public function render()
     {
         $this->jugadores = Persona::all();
-        //$this->edad = $this->edadJugador();
+        // $edadJugador = $this->edadJugador();
         return view('livewire.jugadores');
+        
     }
       
     public function crear()
@@ -126,17 +126,24 @@ class Jugadores extends Component
     }
 
     
-    public function edadJugador()
-    {
-        $fecha1 = date_create(Carbon::now());
-        $jugador1 = Persona::find(1);
+    // public function edadJugador()
+    // {
+    //     $fecha1 = date_create(Carbon::now());
+    //     $jugador1 = Persona::find(1);
         
-        $fecha2 = date_create($jugador1->fechaNacimiento);
-        $edad=date_diff($fecha2,$fecha1)->format('%R%Y');
-        dd(intval($edad));
-        dd($edad);
+    //     $fecha2 = date_create($jugador1->fechaNacimiento);
+    //     $edad=date_diff($fecha2,$fecha1)->format('%R%Y');
+    //     dd(intval($edad));
+    //     dd($edad);
   
-    }
+    // }
     
+    public function calcularEdad($fechaNacimiento)
+    {
+        $fechaNac = Carbon::createFromFormat('Y-m-d', $fechaNacimiento);
+        $edad = $fechaNac->diffInYears(Carbon::now());
+        return $edad;
+    }
+
     
 }
