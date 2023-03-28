@@ -92,16 +92,23 @@ class Asistencias extends Component
 
         if(is_null($this->asistencia_id))
         {
-            Asistencia::create(
-            [
-                'id_temporada'=> $this->temporada_id,
-                'id_categoria'=> $this->temporada_id,
-                'id_inscripcion'=> $this->inscripcion_id,
-                'id_persona'=> $this->persona_id,
-                'asistencia' => $this->asistencia,
-                'fecha' => $this->fecha,
-                
-            ]);    
+            // dd($this->personas_presentes);
+            foreach($this->personas_presentes as $ppre)
+            {
+                $inscripcion = Inscripcion::where('id_temporada', $this->temporada_id)->where('id_categoria', $this->categoria_id)->where('id_persona',$ppre) ->first();
+                //dd($inscripcion);
+                Asistencia::create(
+                    [
+                        'id_temporada'=> $this->temporada_id,
+                        'id_categoria'=> $this->temporada_id,
+                        'id_inscripcion'=> $inscripcion->id,
+                        'id_persona'=> $ppre,
+                        'asistencia' => 'Asistio',
+                        'fecha' => $this->fecha,
+                        
+                    ]);    
+            }
+            
         }
         else
         {

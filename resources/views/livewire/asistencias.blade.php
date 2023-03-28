@@ -42,8 +42,8 @@
                             <tr>
                                 
                                 <td class="border px-4 py-2">{{$asistencia->fecha}}</td>
-                                <td class="border px-4 py-2">{{$asistencia->temporadas->detalle }}</td>
-                                <td class="border px-4 py-2">{{$asistencia->categorias->nombre}}</td>
+                                {{-- <td class="border px-4 py-2">{{$asistencia->temporadas->detalle }}</td>
+                                <td class="border px-4 py-2">{{$asistencia->categorias->nombre}}</td> --}}
                                 <td class="border px-4 py-2">{{$asistencia->personas->nombre}} {{$asistencia->personas->apellido}}</td> 
                                                            
                                 <td class="border px-4 py-2 text-center">   
