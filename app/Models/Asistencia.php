@@ -15,5 +15,13 @@ class Asistencia extends Model
     {
         return $this->belongsTo(Inscripcion::class, 'id_inscripcion');
     }
+    public function temporadas() 
+    {
+        return $this->belongsTo(Temporada::class, 'id_temporada');
+    }
+    public function categorias() 
+    {
+        return $this->belongsTo(Categoria::class, 'id_categoria');
+    }
 
 }

@@ -15,7 +15,7 @@ class Asistencias extends Component
 
     public $asistencias;
     public $categorias;
-    public $temporadas;
+    public $temporadas=[];
     public $personas=[];
     public $personas_presentes = [];
 
@@ -37,9 +37,9 @@ class Asistencias extends Component
 
     public function render()
     {
+        $this->asistencias = Asistencia::all(); 
         $this->temporadas = Temporada::all();
-        $this->categorias = Categoria::all();
-        $this->asistencias = Asistencia::all();                      
+        $this->categorias = Categoria::all();                             
         $this->asistencia = now()->format('Y-m-d');
         return view('livewire.asistencias');
         
@@ -100,7 +100,7 @@ class Asistencias extends Component
                 Asistencia::create(
                     [
                         'id_temporada'=> $this->temporada_id,
-                        'id_categoria'=> $this->temporada_id,
+                        'id_categoria'=> $this->categoria_id,
                         'id_inscripcion'=> $inscripcion->id,
                         'id_persona'=> $ppre,
                         'asistencia' => 'Asistio',
