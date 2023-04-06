@@ -5,11 +5,12 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use App\Models\Persona;
 use Carbon\Carbon;
+use Livewire\WithPagination;
 
 
 class Jugadores extends Component
 {
-    public $jugadores;
+    //public $jugadores;
     
     //datos de jugador
     public $persona_id;
@@ -28,9 +29,13 @@ class Jugadores extends Component
 
     public function render()
     {
-        $this->jugadores = Persona::all();
+        //$this->jugadores = Persona::all();
+        //$this->jugadores = Persona::paginate(1);
         // $edadJugador = $this->edadJugador();
-        return view('livewire.jugadores');
+        //return view('livewire.jugadores');
+        return view('livewire.jugadores', [
+            'personas' => Persona::paginate(1),
+        ]);
         
     }
       

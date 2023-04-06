@@ -47,7 +47,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($jugadores as $jugador)        
+                        @foreach($personas as $jugador)        
                             <tr>
                                 <td class="border px-4 py-2">{{$jugador->nombre}} {{$jugador->apellido}}</td>
                                 <td class="border px-4 py-2">{{$jugador->cedula}}</td>
@@ -68,6 +68,7 @@
                                 </td>
                             </tr>
                         @endforeach
+                        {{ $personas->links() }}
                     </tbody>
                 </table>
             </div>
